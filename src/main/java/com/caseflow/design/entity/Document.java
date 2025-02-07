@@ -13,6 +13,8 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long documentId;
     private String documentName;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,orphanRemoval = true)
     private List<File> files = new ArrayList<>();
     private String documentUrl;
 

@@ -21,14 +21,14 @@ public class Case {
     private String caseDescription;
     private Integer daysToComplete;
 
-    @OneToMany(mappedBy = "case", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY ,  orphanRemoval = true)
     private List<Document> documents = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "fully_drafted_document_id")
     private Document fullyDraftedDocument;
 
-    @OneToMany(mappedBy = "case", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,  orphanRemoval = true)
     private Set<UserAuthEntity> users = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
@@ -40,7 +40,7 @@ public class Case {
 
     private String remarksPath; // Store file path instead of File object
 
-    @OneToMany(mappedBy = "case", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ChecklistRequests> checklist = new ArrayList<>();
 }
 

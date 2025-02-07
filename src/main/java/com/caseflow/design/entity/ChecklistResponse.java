@@ -13,7 +13,7 @@ public class ChecklistResponse {
     private Long checklistResponseId;
     private String remarks;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     private List<File> checklistResponseFiles;
     private ChecklistResponseStatus checklistStatus;
     private String comments;

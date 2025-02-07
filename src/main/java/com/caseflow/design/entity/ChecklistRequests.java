@@ -25,7 +25,7 @@ public class ChecklistRequests {
     @JoinColumn(name = "case_id", nullable = false)
     private Case caseEntity;
 
-    @OneToMany(mappedBy = "checklistRequest", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ChecklistResponse> checklistResponses = new ArrayList<>();
 }
 
