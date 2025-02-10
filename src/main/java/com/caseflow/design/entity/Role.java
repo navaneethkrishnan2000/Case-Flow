@@ -8,42 +8,49 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "roles")
 public class Role implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private long roleId;
 
-    @Column(nullable = false)
+    @Column(name = "role", nullable = false)
     private String role;
+
+    @Column(name = "created-by", nullable = false)
     private long createdBy;
+
+    @Column(name = "updated_by")
     private long updatedBy;
+
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public Role(LocalDateTime createdAt, long createdBy, String role, LocalDateTime updatedAt, long updatedBy) {
-        this.createdAt = createdAt;
-        this.createdBy = createdBy;
+    // Constructor
+
+    public Role(long roleId, String role, long createdBy, long updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.roleId = roleId;
         this.role = role;
-        this.updatedAt = updatedAt;
+        this.createdBy = createdBy;
         this.updatedBy = updatedBy;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public Role() {
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    // Getters and Setters
+
+    public long getRoleId() {
+        return roleId;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(long createdBy) {
-        this.createdBy = createdBy;
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
     public String getRole() {
@@ -54,20 +61,12 @@ public class Role implements Serializable {
         this.role = role;
     }
 
-    public long getRoleId() {
-        return roleId;
+    public long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setRoleId(long roleId) {
-        this.roleId = roleId;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setCreatedBy(long createdBy) {
+        this.createdBy = createdBy;
     }
 
     public long getUpdatedBy() {
@@ -76,5 +75,21 @@ public class Role implements Serializable {
 
     public void setUpdatedBy(long updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

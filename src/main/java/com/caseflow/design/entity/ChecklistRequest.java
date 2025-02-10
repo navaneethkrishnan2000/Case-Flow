@@ -5,27 +5,28 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Table(name = "checklist_requests")
-public class ChecklistRequests {
+public class ChecklistRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "checklist_id")
     private Long checklistId;
 
+    @Column(name = "remarks")
     private String remarks;
 
-    @Lob
-    private byte[] checklistFile; // Use @Lob for binary storage
-
     @Enumerated(EnumType.STRING)
+    @Column(name = "checklist_status")
     private ChecklistStatus checklistStatus;
 
     @ManyToOne
     @JoinColumn(name = "case_id", nullable = false)
     private Case caseEntity;
 
-    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<ChecklistResponse> checklistResponses = new ArrayList<>();
+    @OneToMany(mappedBy = "checklistRequest", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ChecklistFile> checklistFiles = new ArrayList<>();
 }
 

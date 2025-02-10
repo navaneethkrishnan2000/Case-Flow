@@ -1,6 +1,23 @@
 package com.caseflow.design.enums;
 
 public enum CaseStatus {
-    PENDING, IN_PROGRSS, IN_REVIEW, APPROVED, SUBMITTED, REJECETED
+
+    PENDING,
+
+    CASE_ASSIGNED,
+
+    IN_PROGRSS,
+
+    REVIEW_IN_PROGRESS,
+
+    REVIEW_COMPLETED,
+
+    DRAFT_SUBMITTED,
+
+    CASE_APPROVED,
+
+    CASE_SUBMITTED,
+
+    CASE_REJECETED
 }
 
